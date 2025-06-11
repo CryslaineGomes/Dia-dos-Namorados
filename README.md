@@ -1,6 +1,6 @@
 # Página do Dia dos Namorados 💖
 
-Uma página simples feita em HTML, CSS e JavaScript para celebrar o Dia dos Namorados.
+Uma página simples feita em HTML, CSS e JavaScript para uma competição na minha empresa. O objetivo era escrever uma frase que representasse o meu setor. Na frase escrevi Acesse e coloquei o link do site.
 
 ## O que ela faz:
 
