@@ -33,7 +33,8 @@
       font-size: 2rem;
       border-radius: 10px;
       cursor: pointer;
-      margin-top: 1.5rem;
+      margin: 1rem auto;
+      display: block;
       position: relative;
       z-index: 2;
     }
@@ -58,17 +59,39 @@
         opacity: 0;
       }
     }
+
+    #vote-msg {
+      font-size: 2rem;
+      margin-top: 1rem;
+      color: #b30000;
+      display: none;
+    }
   </style>
 </head>
 <body>
   <h1>Feliz Dia dos Namorados!</h1>
   <p>O amor está no ar ❤️</p>
+
+  <!-- Botão que mostra "Vote em mim" -->
+  <button onclick="showVote()">🗳️ Clique aqui</button>
+  <div id="vote-msg">✨ Vote em mim ✨</div>
+
+  <!-- Botão que toca música e solta corações -->
   <button onclick="playRomanticMusicAndHearts()">🎶 Música Romântica</button>
+
+  <!-- Botão para baixar cartão virtual PDF -->
+  <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" download="CartaoVirtual.pdf">
+    <button>💌 Baixar Cartão Virtual</button>
+  </a>
 
   <!-- Música romântica -->
   <audio id="romantic-music" src="https://www.bensound.com/bensound-music/bensound-love.mp3"></audio>
 
   <script>
+    function showVote() {
+      document.getElementById("vote-msg").style.display = "block";
+    }
+
     function playRomanticMusicAndHearts() {
       const audio = document.getElementById("romantic-music");
       audio.play();
@@ -78,7 +101,7 @@
       for (let i = 0; i < total; i++) {
         setTimeout(() => {
           createHeart();
-        }, i * 150); // Intervalo diferente entre os corações
+        }, i * 150);
       }
     }
 
@@ -89,12 +112,10 @@
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.top = "90vh";
 
-      // Tamanhos aleatórios
-      const size = Math.random() * 30 + 20; // 20px a 50px
+      const size = Math.random() * 30 + 20;
       heart.style.fontSize = size + "px";
 
-      // Duração aleatória da animação
-      const duration = Math.random() * 3 + 2; // 2s a 5s
+      const duration = Math.random() * 3 + 2;
       heart.style.animationDuration = duration + "s";
 
       document.body.appendChild(heart);
