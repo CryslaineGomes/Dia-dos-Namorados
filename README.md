@@ -1,4 +1,4 @@
-# Página do Dia dos Namorados 💖
+# Página do Dia dos Namorados ❤️
 
 Uma página simples feita em HTML, CSS e JavaScript para uma competição na minha empresa. O objetivo era escrever uma frase que representasse o meu setor. Na frase escrevi Acesse e coloquei o link do site.
 
@@ -17,8 +17,8 @@ Uma página simples feita em HTML, CSS e JavaScript para uma competição na min
 ## Como usar:
 
 1. Abra o arquivo `index.html` no navegador.
-2. Aproveite a música, a animação e baixe o cartão clicando no botão 💌.
+2. Aproveite a música, a animação e baixe o cartão clicando no botão 🥰.
 
 ---
 
-Feito com carinho 💘
+Feito com carinho ❤️
