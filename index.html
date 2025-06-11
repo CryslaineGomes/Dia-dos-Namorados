@@ -10,9 +10,8 @@
       color: #cc0000;
       font-family: Arial, sans-serif;
       text-align: center;
-      padding: 20vh 10vw;
+      padding: 5vh 5vw;
       margin: 0;
-      overflow: hidden;
     }
 
     h1 {
@@ -66,6 +65,10 @@
       color: #b30000;
       display: none;
     }
+
+    a {
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
@@ -76,33 +79,32 @@
   <button onclick="showVote()">🗳️ Clique aqui</button>
   <div id="vote-msg">✨ Vote em mim ✨</div>
 
-  <!-- Botão que toca música e solta corações -->
-  <button onclick="playRomanticMusicAndHearts()">🎶 Música Romântica</button>
+  <!-- Botão para pausar ou continuar a música -->
+  <button onclick="toggleMusic()">⏯️ Pausar / Continuar Música</button>
 
   <!-- Botão para baixar cartão virtual PDF -->
-  <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" download="CartaoVirtual.pdf">
+  <a href="CartaoVirtual.pdf" download="CartaoVirtual.pdf">
     <button>💌 Baixar Cartão Virtual</button>
   </a>
 
   <!-- Música romântica -->
-  <audio id="romantic-music" src="https://www.bensound.com/bensound-music/bensound-love.mp3"></audio>
+  <audio id="romantic-music" src="https://www.bensound.com/bensound-music/bensound-love.mp3" loop></audio>
 
   <script>
+    let isPlaying = false;
+    const audio = document.getElementById("romantic-music");
+
     function showVote() {
       document.getElementById("vote-msg").style.display = "block";
     }
 
-    function playRomanticMusicAndHearts() {
-      const audio = document.getElementById("romantic-music");
-      audio.play();
-
-      // Solta vários corações com intervalos diferentes
-      let total = 40;
-      for (let i = 0; i < total; i++) {
-        setTimeout(() => {
-          createHeart();
-        }, i * 150);
+    function toggleMusic() {
+      if (isPlaying) {
+        audio.pause();
+      } else {
+        audio.play();
       }
+      isPlaying = !isPlaying;
     }
 
     function createHeart() {
@@ -124,6 +126,17 @@
         heart.remove();
       }, duration * 1000);
     }
+
+    function autoStartEffects() {
+      audio.play();
+      isPlaying = true;
+      for (let i = 0; i < 40; i++) {
+        setTimeout(createHeart, i * 150);
+      }
+    }
+
+    // Ativar automaticamente ao carregar
+    window.onload = autoStartEffects;
   </script>
 </body>
 </html>
