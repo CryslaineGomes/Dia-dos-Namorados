@@ -1,93 +1,108 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dia dos Namorados</title>
-    <style>
-        body {
-            background-color: #ffe6e6;
-            color: #cc0000;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20vh 10vw;
-            margin: 0;
-            overflow: hidden;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dia dos Namorados</title>
+  <style>
+    body {
+      background-color: #ffe6e6;
+      color: #cc0000;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20vh 10vw;
+      margin: 0;
+      overflow: hidden;
+    }
 
-        h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-        }
+    h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
 
-        p {
-            font-size: 2rem;
-            font-weight: bold;
-        }
+    p {
+      font-size: 2rem;
+      font-weight: bold;
+    }
 
-        button {
-            background-color: #ff4d4d;
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 2rem;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-top: 1.5rem;
-            position: relative;
-            z-index: 2;
-        }
+    button {
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 2rem;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
 
-        button:hover {
-            background-color: #cc0000;
-        }
+    button:hover {
+      background-color: #cc0000;
+    }
 
-        .heart {
-            position: absolute;
-            font-size: 2rem;
-            animation: rise 4s linear forwards;
-        }
+    .heart {
+      position: absolute;
+      color: red;
+      animation: rise linear forwards;
+    }
 
-        @keyframes rise {
-            0% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh);
-                opacity: 0;
-            }
-        }
-    </style>
+    @keyframes rise {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Feliz Dia dos Namorados!</h1>
-    <p>O amor está no ar ❤️</p>
-    <button onclick="showHearts(); playAudio();">💖 Vote em mim</button>
+  <h1>Feliz Dia dos Namorados!</h1>
+  <p>O amor está no ar ❤️</p>
+  <button onclick="playRomanticMusicAndHearts()">🎶 Música Romântica</button>
 
-    <!-- Música de fundo -->
-    <audio id="bg-music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+  <!-- Música romântica -->
+  <audio id="romantic-music" src="https://www.bensound.com/bensound-music/bensound-love.mp3"></audio>
 
-    <script>
-        function showHearts() {
-            for (let i = 0; i < 30; i++) {
-                let heart = document.createElement("div");
-                heart.classList.add("heart");
-                heart.innerText = "💖";
-                heart.style.left = Math.random() * 100 + "vw";
-                heart.style.top = "90vh";
-                document.body.appendChild(heart);
+  <script>
+    function playRomanticMusicAndHearts() {
+      const audio = document.getElementById("romantic-music");
+      audio.play();
 
-                setTimeout(() => {
-                    heart.remove();
-                }, 4000);
-            }
-        }
+      // Solta vários corações com intervalos diferentes
+      let total = 40;
+      for (let i = 0; i < total; i++) {
+        setTimeout(() => {
+          createHeart();
+        }, i * 150); // Intervalo diferente entre os corações
+      }
+    }
 
-        function playAudio() {
-            const audio = document.getElementById("bg-music");
-            audio.play();
-        }
-    </script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerText = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.top = "90vh";
+
+      // Tamanhos aleatórios
+      const size = Math.random() * 30 + 20; // 20px a 50px
+      heart.style.fontSize = size + "px";
+
+      // Duração aleatória da animação
+      const duration = Math.random() * 3 + 2; // 2s a 5s
+      heart.style.animationDuration = duration + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, duration * 1000);
+    }
+  </script>
 </body>
 </html>
