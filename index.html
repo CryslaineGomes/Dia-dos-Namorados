@@ -21,17 +21,24 @@
             font-size: 2rem;
             font-weight: bold;
         }
-        .heart {
-            color: #e60000;
-            font-size: 3rem;
-            margin-top: 1rem;
+        button {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 1.5rem;
+        }
+        button:hover {
+            background-color: #cc0000;
         }
     </style>
 </head>
 <body>
     <h1>Feliz Dia dos Namorados!</h1>
     <p>O amor está no ar ❤️</p>
-    <div class="heart">💖</div>
-    <p>Vote em mim </p>
+    <button onclick="alert('Vote em mim 😄')">💖</button>
 </body>
 </html>
