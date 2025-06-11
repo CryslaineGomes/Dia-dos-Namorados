@@ -12,15 +12,19 @@
             text-align: center;
             padding: 20vh 10vw;
             margin: 0;
+            overflow: hidden;
         }
+
         h1 {
             font-size: 4rem;
             margin-bottom: 1rem;
         }
+
         p {
             font-size: 2rem;
             font-weight: bold;
         }
+
         button {
             background-color: #ff4d4d;
             color: white;
@@ -30,15 +34,60 @@
             border-radius: 10px;
             cursor: pointer;
             margin-top: 1.5rem;
+            position: relative;
+            z-index: 2;
         }
+
         button:hover {
             background-color: #cc0000;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 2rem;
+            animation: rise 4s linear forwards;
+        }
+
+        @keyframes rise {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
     <h1>Feliz Dia dos Namorados!</h1>
     <p>O amor está no ar ❤️</p>
-    <button onclick="alert('Vote em mim 😄')">Clique aqui</button>
+    <button onclick="showHearts(); playAudio();">💖 Vote em mim</button>
+
+    <!-- Música de fundo -->
+    <audio id="bg-music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
+    <script>
+        function showHearts() {
+            for (let i = 0; i < 30; i++) {
+                let heart = document.createElement("div");
+                heart.classList.add("heart");
+                heart.innerText = "💖";
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.top = "90vh";
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 4000);
+            }
+        }
+
+        function playAudio() {
+            const audio = document.getElementById("bg-music");
+            audio.play();
+        }
+    </script>
 </body>
 </html>
