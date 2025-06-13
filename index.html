@@ -4,72 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dia dos Namorados</title>
-  <style>
-    body {
-      background-color: #ffe6e6;
-      color: #cc0000;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 5vh 5vw;
-      margin: 0;
-    }
-
-    h1 {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      font-size: 2rem;
-      font-weight: bold;
-    }
-
-    button {
-      background-color: #ff4d4d;
-      color: white;
-      border: none;
-      padding: 1rem 2rem;
-      font-size: 2rem;
-      border-radius: 10px;
-      cursor: pointer;
-      margin: 1rem auto;
-      display: block;
-      position: relative;
-      z-index: 2;
-    }
-
-    button:hover {
-      background-color: #cc0000;
-    }
-
-    .heart {
-      position: absolute;
-      color: red;
-      animation: rise linear forwards;
-    }
-
-    @keyframes rise {
-      0% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh);
-        opacity: 0;
-      }
-    }
-
-    #vote-msg {
-      font-size: 2rem;
-      margin-top: 1rem;
-      color: #b30000;
-      display: none;
-    }
-
-    a {
-      text-decoration: none;
-    }
-  </style>
+  <link rel="stylesheet" href="./assets/css/main.css">
 </head>
 <body>
   <h1>Feliz Dia dos Namorados!</h1>
@@ -82,60 +17,14 @@
   <button onclick="toggleMusic()">⏯️ Pausar / Continuar Música</button>
 
   <!-- Botão para baixar cartão virtual PDF -->
-  <a href="CartaoVirtual.pdf" download="CartaoVirtual.pdf">
+  <a href="CartaoVirtual.pdf" download="CartaoVirtual.pdf" title="Cartão Virtual">
     <button>💌 Baixar Cartão Virtual</button>
   </a>
 
   <!-- Música romântica -->
   <audio id="romantic-music" src="https://www.bensound.com/bensound-music/bensound-love.mp3" loop></audio>
 
-  <script>
-    let isPlaying = false;
-    const audio = document.getElementById("romantic-music");
+  <script src="./assets/js/main.js"></script>
 
-    function showVote() {
-      document.getElementById("vote-msg").style.display = "block";
-    }
-
-    function toggleMusic() {
-      if (isPlaying) {
-        audio.pause();
-      } else {
-        audio.play();
-      }
-      isPlaying = !isPlaying;
-    }
-
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.innerText = "❤️";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.top = "90vh";
-
-      const size = Math.random() * 30 + 20;
-      heart.style.fontSize = size + "px";
-
-      const duration = Math.random() * 3 + 2;
-      heart.style.animationDuration = duration + "s";
-
-      document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, duration * 1000);
-    }
-
-    function autoStartEffects() {
-      audio.play();
-      isPlaying = true;
-      for (let i = 0; i < 40; i++) {
-        setTimeout(createHeart, i * 150);
-      }
-    }
-
-    // Ativar automaticamente ao carregar
-    window.onload = autoStartEffects;
-  </script>
 </body>
 </html>
